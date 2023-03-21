@@ -3,19 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:padding="20dp"
+    android:padding="7dp"
     android:layout_height="match_parent">
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src=""/>
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:contentDescription="test"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/transparent"
+        android:id="@+id/nav_close"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/baseline_close_24"/>
 
-        android:src="@tools:sample/avatars"
-         />
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:id="@+id/nav_profile_pic"
+        app:layout_constraintTop_toBottomOf="@id/nav_close"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/ic_launcher_foreground"
+        app:tint="@color/black" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelines_v_l"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="152dp" />
+    <TextView
+        app:layout_constraintTop_toTopOf="@id/nav_profile_pic"
+        android:id="@+id/nav_username"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gavi"
+        app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+        tools:layout_editor_absoluteY="132dp" />
+    <TextView
+        android:id="@+id/nav_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Gavi@gmail.com"
+        app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+        app:layout_constraintTop_toBottomOf="@+id/nav_username" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
