@@ -3,14 +3,14 @@ package com.zero.drivesafe.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.zero.drivesafe.MainActivity;
+import com.zero.drivesafe.databinding.ActivityMainBinding;
 import com.zero.drivesafe.databinding.CardDashboardBinding;
-import com.zero.drivesafe.fragments.DashboardFragment;
-import com.zero.drivesafe.fragments.TripDetailFragment;
 import com.zero.drivesafe.models.Ride;
 
 import java.util.ArrayList;
@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
     public ArrayList<Ride> RideArrayList;
     public CardDashboardBinding cardDashboardBinding;
+    public ActivityMainBinding activityMainBinding;
 
     public RideAdapter(ArrayList<Ride> RideArrayList) {
         this.RideArrayList = RideArrayList;
@@ -53,7 +54,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         return RideArrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         private final CardDashboardBinding cardDashboardBinding;
 
         public ViewHolder(@NonNull CardDashboardBinding cardDashboardBinding) {
