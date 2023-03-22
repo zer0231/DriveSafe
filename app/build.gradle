@@ -6,7 +6,9 @@ android {
     namespace 'com.zero.drivesafe'
     compileSdk 33
 
-   
+    buildFeatures{
+        viewBinding true
+    }
 
     defaultConfig {
         applicationId "com.zero.drivesafe"

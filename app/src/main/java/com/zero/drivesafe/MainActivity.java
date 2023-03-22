@@ -1,37 +1,31 @@
 package com.zero.drivesafe;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-
-import com.google.android.material.navigation.NavigationView;
+import com.zero.drivesafe.databinding.ActivityMainBinding;
+import com.zero.drivesafe.databinding.NavHeaderBinding;
 
 public class MainActivity extends AppCompatActivity {
+    ActivityMainBinding activityMainBinding;
+    NavHeaderBinding navHeaderBinding;
 
-    DrawerLayout drawerLayout;
 
-    NavigationView navigationView;
-    ImageButton btnNavOpen,btnNavClose;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        View header = activityMainBinding.navigationView.getHeaderView(0);
+        navHeaderBinding = NavHeaderBinding.bind(header);
 
+        setSupportActionBar(activityMainBinding.toolbar);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);//Adding toolbar
-        setSupportActionBar(toolbar);
-        drawerLayout = findViewById(R.id.draw_layout);
-        btnNavOpen = findViewById(R.id.tool_bar_nav_button);
-        navigationView = findViewById(R.id.navigation_view);
-        btnNavOpen.setOnClickListener(view -> {drawerLayout.open();}); //for opening navigation menu
+        activityMainBinding.toolBarNavButton.setOnClickListener(view -> activityMainBinding.drawLayout.open());//for opening navigation menu
 
+        navHeaderBinding.navClose.setOnClickListener(view ->  activityMainBinding.drawLayout.close());//for closing navigation menu
 
-        View headerLayout = navigationView.getHeaderView(0);
-        btnNavClose = headerLayout.findViewById(R.id.nav_close);
-        btnNavClose.setOnClickListener(view -> drawerLayout.close()); //for closing navigation menu
+        View mainView = activityMainBinding.getRoot();
+        setContentView(mainView);
+
     }
 }

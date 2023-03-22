@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/dashboard_card"
+    android:clickable="true"
     android:layout_marginBottom="20dp"
     app:cardCornerRadius="17dp">
 
@@ -13,6 +15,7 @@
         android:layout_margin="17dp">
 
         <ImageView
+            android:contentDescription="@string/source_imageview"
             android:id="@+id/adjust_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:text="Home"
+            android:text="@string/home"
             app:layout_constraintStart_toEndOf="@id/adjust_iv"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,13 +39,14 @@
             android:layout_marginTop="20dp"
             android:src="@drawable/baseline_location_on_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/adjust_iv" />
+            app:layout_constraintTop_toBottomOf="@id/adjust_iv"
+            android:contentDescription="@string/destination_imageview" />
 
         <TextView
             android:id="@+id/destination_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Barcelona"
+            android:text="@string/barcelona"
             app:layout_constraintBottom_toBottomOf="@id/location_iv"
             app:layout_constraintStart_toEndOf="@id/location_iv"
             app:layout_constraintTop_toTopOf="@id/location_iv" />
@@ -71,10 +75,10 @@
             <TextView
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/total_distance"
+                android:id="@+id/total_distance_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="110 Km"
+                android:text="@string/total_distance"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/divider1"
@@ -85,10 +89,10 @@
             <TextView
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/time"
+                android:id="@+id/time_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1 h 32 m"
+                android:text="@string/time_traveled"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/divider2"
@@ -99,10 +103,10 @@
             <TextView
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:id="@+id/highest_speed"
+                android:id="@+id/highest_speed_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="140 Km/h"
+                android:text="@string/speed"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -117,9 +121,9 @@
                 android:layout_width="1dp"
                 android:layout_height="68dp"
                 android:background="@color/white"
-                app:layout_constraintEnd_toStartOf="@+id/time"
+                app:layout_constraintEnd_toStartOf="@+id/time_tv"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/total_distance"
+                app:layout_constraintStart_toEndOf="@+id/total_distance_tv"
                 tools:layout_editor_absoluteY="1dp" />
 
             <View
@@ -129,9 +133,9 @@
                 android:layout_width="1dp"
                 android:layout_height="68dp"
                 android:background="@color/white"
-                app:layout_constraintEnd_toStartOf="@+id/highest_speed"
+                app:layout_constraintEnd_toStartOf="@+id/highest_speed_tv"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/time"
+                app:layout_constraintStart_toEndOf="@+id/time_tv"
                 tools:layout_editor_absoluteY="1dp" />
 
 
@@ -145,13 +149,15 @@
             android:src="@drawable/baseline_circle_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/distance_constraint"
-            app:tint="#D60F3D" />
+            app:tint="#D60F3D"
+            android:contentDescription="@string/alert_indicator_imageview" />
 
         <TextView
+            android:id="@+id/alert_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="Total Alerts: 12"
+            android:text="@string/alerts"
             app:layout_constraintStart_toEndOf="@id/alert_indicator"
             app:layout_constraintTop_toTopOf="@id/alert_indicator" />
 
@@ -163,13 +169,14 @@
             android:src="@drawable/baseline_circle_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/alert_indicator"
-            app:tint="#D60F3D" />
+            app:tint="#D60F3D"
+            android:contentDescription="@string/performance_image_view" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:text="7.5% poor performance than last trip"
+            android:text="@string/performance_text"
             app:layout_constraintStart_toEndOf="@id/performance_indicator"
             app:layout_constraintTop_toTopOf="@id/performance_indicator" />
 
@@ -178,7 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="17 June 2021,23:23pm"
+            android:text="@string/date_and_time"
             android:alpha="0.7"
             android:paddingTop="20dp"
          app:layout_constraintTop_toBottomOf="@id/performance_indicator"
