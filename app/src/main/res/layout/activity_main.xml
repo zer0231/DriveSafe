@@ -52,9 +52,12 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph"
             android:name="com.zero.drivesafe.fragments.DashboardFragment"
             android:layout_height="0dp"
             android:paddingBottom="16dp"
@@ -78,7 +81,7 @@
         android:layout_height="match_parent"
         android:id="@+id/navigation_view"
         android:layout_gravity="start"
-        android:visibility="visible"
+        android:visibility="gone"
         app:headerLayout="@layout/nav_header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

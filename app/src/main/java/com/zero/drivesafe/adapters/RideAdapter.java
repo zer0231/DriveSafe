@@ -5,12 +5,16 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zero.drivesafe.MainActivity;
 import com.zero.drivesafe.databinding.ActivityMainBinding;
 import com.zero.drivesafe.databinding.CardDashboardBinding;
+import com.zero.drivesafe.databinding.FragmentTripDetailBinding;
+import com.zero.drivesafe.fragments.TripDetailFragment;
 import com.zero.drivesafe.models.Ride;
 
 import java.util.ArrayList;
@@ -22,6 +26,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
 
     public RideAdapter(ArrayList<Ride> RideArrayList) {
         this.RideArrayList = RideArrayList;
+
 
     }
 
@@ -35,6 +40,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RideAdapter.ViewHolder holder, int position) {
         Ride rideObject = RideArrayList.get(position);
+
         String alert = "Total Alerts: " + rideObject.getAlerts();
         String totalDistance = rideObject.getTotalDistance() + " Km";
         String highestSpeed = rideObject.getHighestSpeed() + " Km/h";
@@ -45,9 +51,12 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         holder.cardDashboardBinding.totalDistanceTv.setText(totalDistance);
         holder.cardDashboardBinding.highestSpeedTv.setText(highestSpeed);
         holder.cardDashboardBinding.dashboardCard.setOnClickListener(view -> {
-
+            activityMainBinding = ActivityMainBinding.bind(view);
+            AppCompatActivity activity = (AppCompatActivity) view.getContext();
+//            activity.getSupportFragmentManager().beginTransaction().replace(  activityMainBinding.fragmentContainer.getId(), new TripDetailFragment()).commit();
         });
     }
+
 
     @Override
     public int getItemCount() {

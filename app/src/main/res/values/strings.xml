@@ -40,4 +40,11 @@
     <string name="title_activity_splash_screen">SplashScreen</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="driver_profiles">Driver Profiles</string>
+    <string name="total_trip">Total trips: 2</string>
+    <string name="next_button">next button</string>
+    <string name="daily_report">Daily Report</string>
+    <string name="date">17 june 2021</string>
+    <string name="alert_number">12</string>
+    <string name="alert">Alert</string>
 </resources>

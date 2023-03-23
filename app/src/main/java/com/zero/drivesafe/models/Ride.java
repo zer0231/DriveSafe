@@ -1,10 +1,10 @@
 package com.zero.drivesafe.models;
 
 public class Ride {
-    String destination, source, time;
-    int alerts;
-    int totalDistance;
-    int highestSpeed;
+    private String destination, source, time;
+    private int alerts;
+    private int totalDistance;
+    private int highestSpeed;
 
     public String getDestination() {
         return destination;

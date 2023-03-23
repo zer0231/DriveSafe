@@ -4,6 +4,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    >
+    app:startDestination="@id/mainActivity">
 
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.zero.drivesafe.MainActivity"
+        android:label="activity_main"
+        app:action="@string/profile_image"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.zero.drivesafe.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.zero.drivesafe.fragments.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+
+    </fragment>
 </navigation>
