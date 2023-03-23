@@ -2,13 +2,20 @@ package com.zero.drivesafe.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.zero.drivesafe.R;
+import com.zero.drivesafe.databinding.FragmentTripDetailBinding;
+
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,18 +56,36 @@ public class TripDetailFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity) requireActivity()).getSupportActionBar().hide(); //for hiding toolbar
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show(); //for showing toolbar after the fragment is closed
+
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_trip_detail, container, false);
+        FragmentTripDetailBinding fragmentTripDetailBinding = FragmentTripDetailBinding.inflate(inflater,container,false);
+        fragmentTripDetailBinding.backIv.setOnClickListener(view -> {
+           
+        });
+        return fragmentTripDetailBinding.getRoot() ;
     }
 }

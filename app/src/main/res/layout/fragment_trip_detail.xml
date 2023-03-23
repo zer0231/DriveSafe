@@ -6,14 +6,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.TripDetailFragment"
     android:layout_height="match_parent">
+
+
+
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+
+            style="@style/fragment_theme"
+            android:layout_height="wrap_content">
+
+
+            <androidx.appcompat.widget.Toolbar
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="match_parent"
+                android:id="@+id/trip_detail_toolbar"
+                android:background="@color/black"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageView
+                    android:id="@+id/back_iv"
+                    android:layout_width="48dp"
+                    app:tint="@color/white"
+                    android:layout_height="48dp"
+                    android:src="@drawable/baseline_arrow_back_24"/>
+
+
+            </androidx.appcompat.widget.Toolbar>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline_left"
@@ -36,7 +64,7 @@
                 android:layout_height="16dp"
                 android:src="@drawable/baseline_access_time_filled_24"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
-                app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintTop_toBottomOf="@id/trip_detail_toolbar"
                 android:contentDescription="@string/clock_imageview" />
 
             <TextView
@@ -202,4 +230,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
+
+
 </FrameLayout>

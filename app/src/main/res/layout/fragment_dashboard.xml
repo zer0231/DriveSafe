@@ -5,17 +5,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:backgroundTint="@color/black"
+    android:background="@color/purple_200"
 
     tools:context=".fragments.DashboardFragment"
     android:layout_height="match_parent">
 
 
 <ScrollView
+    android:backgroundTint="@color/black"
+    android:background="@color/purple_200"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="#DDDDDD"
+        style="@style/fragment_theme"
         android:layout_height="match_parent"
         >
 
@@ -77,12 +81,15 @@
             app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
             app:layout_constraintTop_toTopOf="parent"
             app:trackColor="@color/black"
-            />
+            >
+
+        </com.google.android.material.progressindicator.CircularProgressIndicator>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/dashboard"
+            style="@style/fragment_title_theme"
             android:paddingTop="10dp"
             android:id="@+id/dashboard_tv"
             app:layout_constraintStart_toStartOf="@id/guidelines_v_l"

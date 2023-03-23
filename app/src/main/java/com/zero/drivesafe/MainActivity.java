@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     int itemID = item.getItemId();
                     if (itemID == R.id.dashboard_bottom_nav_btn) {
                         replaceFragment(new DashboardFragment(), activityMainBinding.fragmentContainer);
+
                     } else if (itemID == R.id.report_bottom_nav_btn) {
                         replaceFragment(new ReportFragment(), activityMainBinding.fragmentContainer);
                     } else if (itemID == R.id.profile_bottom_nav_btn) {

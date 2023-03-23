@@ -39,12 +39,12 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        com.zero.drivesafe.databinding.FragmentDashboardBinding dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false);
+        FragmentDashboardBinding dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false);
         ArrayList<Ride> rideArrayList = new ArrayList<>();
-        rideArrayList.add(new Ride("home", "home", "2 h", 2, 2, 2));
-        rideArrayList.add(new Ride("home", "home", "3 h", 2, 2, 2));
-        rideArrayList.add(new Ride("home", "home", "2 h", 2, 2, 2));
-        rideArrayList.add(new Ride("home", "home", "4 h", 2, 2, 2));
+        rideArrayList.add(new Ride("home", "home", "2 h 4 m", 2, 2, 2));
+        rideArrayList.add(new Ride("home", "home", "3 h 3 m", 2, 2, 2));
+        rideArrayList.add(new Ride("home", "home", "2 h 1 m", 2, 2, 2));
+        rideArrayList.add(new Ride("home", "home", "4 h 2 m", 2, 2, 2));
         RideAdapter rideAdapter = new RideAdapter(rideArrayList);
         dashboardBinding.dashboardRecyclerview.setLayoutManager(new LinearLayoutManager(dashboardBinding.dashboardRecyclerview.getContext()));
         dashboardBinding.dashboardRecyclerview.setAdapter(rideAdapter);

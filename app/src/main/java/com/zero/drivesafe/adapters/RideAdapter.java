@@ -3,6 +3,7 @@ package com.zero.drivesafe.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,13 +35,14 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
     @Override
     public RideAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         cardDashboardBinding = CardDashboardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        activityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
         return new ViewHolder(cardDashboardBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RideAdapter.ViewHolder holder, int position) {
-        Ride rideObject = RideArrayList.get(position);
 
+        Ride rideObject = RideArrayList.get(position);
         String alert = "Total Alerts: " + rideObject.getAlerts();
         String totalDistance = rideObject.getTotalDistance() + " Km";
         String highestSpeed = rideObject.getHighestSpeed() + " Km/h";
@@ -51,9 +53,11 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         holder.cardDashboardBinding.totalDistanceTv.setText(totalDistance);
         holder.cardDashboardBinding.highestSpeedTv.setText(highestSpeed);
         holder.cardDashboardBinding.dashboardCard.setOnClickListener(view -> {
-            activityMainBinding = ActivityMainBinding.bind(view);
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//            activity.getSupportFragmentManager().beginTransaction().replace(  activityMainBinding.fragmentContainer.getId(), new TripDetailFragment()).commit();
+            activity.getSupportFragmentManager().beginTransaction()
+
+                    .replace( activityMainBinding.fragmentContainer.getId() , new TripDetailFragment())
+                    .commit();
         });
     }
 
