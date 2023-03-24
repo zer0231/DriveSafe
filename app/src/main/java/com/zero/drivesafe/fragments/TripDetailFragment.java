@@ -32,7 +32,8 @@ public class TripDetailFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-private Ride ride;
+    private Ride ride;
+
     public TripDetailFragment() {
         // Required empty public constructor
     }
@@ -81,23 +82,22 @@ private Ride ride;
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FragmentTripDetailBinding fragmentTripDetailBinding = FragmentTripDetailBinding.inflate(inflater,container,false);
+        FragmentTripDetailBinding fragmentTripDetailBinding = FragmentTripDetailBinding.inflate(inflater, container, false);
         fragmentTripDetailBinding.sourceTv.setText(ride.getSource());
-        fragmentTripDetailBinding.totalDistanceTv.setText(ride.getTotalDistance()+" ");
+        fragmentTripDetailBinding.totalDistanceTv.setText(ride.getTotalDistance() + " ");
         fragmentTripDetailBinding.timeTv.setText(ride.getTime());
-        fragmentTripDetailBinding.highestSpeedTv.setText(ride.getHighestSpeed()+" ");
-        fragmentTripDetailBinding.tvTotalAlerts.setText(ride.getAlerts()+" ");
+        fragmentTripDetailBinding.highestSpeedTv.setText(ride.getHighestSpeed() + " ");
+        fragmentTripDetailBinding.tvTotalAlerts.setText(ride.getAlerts() + " ");
         fragmentTripDetailBinding.backIv.setOnClickListener(view -> {
-            getActivity().getFragmentManager().popBackStack();
+            getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
+//getActivity().getSupportFragmentManager().popBackStackImmediate();
             Toast.makeText(getContext(), "exit", Toast.LENGTH_SHORT).show();
         });
-        return fragmentTripDetailBinding.getRoot() ;
+        return fragmentTripDetailBinding.getRoot();
     }
 }

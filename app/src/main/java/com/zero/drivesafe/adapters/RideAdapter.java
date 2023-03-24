@@ -69,7 +69,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
             activity.getSupportFragmentManager().beginTransaction()
 
-                    .replace(activityMainBinding.fragmentContainer.getId(), new TripDetailFragment(rideObject))
+                    .add(activityMainBinding.fragmentContainer.getId(), new TripDetailFragment(rideObject))
                     .commit();
         });
     }
