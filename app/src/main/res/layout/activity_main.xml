@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/draw_layout"
-    tools:openDrawer="start"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -12,7 +11,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -26,7 +24,6 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-
                 android:layout_height="match_parent">
 
                 <ImageButton
@@ -55,14 +52,14 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            app:defaultNavHost="true"
-            app:navGraph="@navigation/nav_graph"
             android:name="com.zero.drivesafe.fragments.DashboardFragment"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:paddingBottom="16dp"
+            app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:navGraph="@navigation/nav_graph"
             tools:layout="@layout/fragment_dashboard" />
 
 
@@ -70,44 +67,48 @@
             android:id="@+id/bottom_nav_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             app:itemTextColor="@color/black"
+            app:labelVisibilityMode="selected"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/bottom_nav_menu" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/navigation_view"
         android:layout_gravity="start"
         android:visibility="visible"
         app:headerLayout="@layout/nav_header"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/nav_drawer_menu" >
+        app:menu="@menu/nav_drawer_menu">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:padding="30dp"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="30dp">
+
             <TextView
                 android:id="@+id/version_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/version"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/date_and_time"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/date_and_time"/>
+                app:layout_constraintStart_toStartOf="parent" />
+
             <TextView
                 android:id="@+id/date_and_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/time"
-                app:layout_constraintStart_toStartOf="@id/version_description"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/version_description"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toStartOf="@id/version_description" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

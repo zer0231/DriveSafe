@@ -40,5 +40,9 @@
     <style name="card_theme">
         <item name="backgroundColor">@color/white_l</item>
     </style>
+    <style name="progress_text">
+        <item name="android:textColor">@color/grey</item>
+        <item name="android:textSize">12sp</item>
+    </style>
 
 </resources>

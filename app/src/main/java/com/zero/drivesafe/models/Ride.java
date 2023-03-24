@@ -5,6 +5,7 @@ public class Ride {
     private int alerts;
     private int totalDistance;
     private int highestSpeed;
+    private int progress;
 
     public String getDestination() {
         return destination;
@@ -50,13 +51,18 @@ public class Ride {
         this.highestSpeed = highestSpeed;
     }
 
-    public Ride(String destination, String source, String time, int alerts, int totalDistance, int highestSpeed) {
+    public int getProgress() {
+        return progress;
+    }
+
+    public Ride(String destination, String source, String time, int alerts, int totalDistance, int highestSpeed, int progress) {
         this.destination = destination;
         this.source = source;
         this.time = time;
         this.alerts = alerts;
         this.totalDistance = totalDistance;
         this.highestSpeed = highestSpeed;
+        this.progress = progress;
     }
 
     public int getAlerts() {

@@ -18,6 +18,9 @@ import com.zero.drivesafe.fragments.ProfileFragment;
 import com.zero.drivesafe.fragments.ReportFragment;
 import com.zero.drivesafe.fragments.TripDetailFragment;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding activityMainBinding;
     NavHeaderBinding navHeaderBinding;
@@ -40,11 +43,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(mainView);
 
 
-        activityMainBinding.bottomNavBar.setOnItemSelectedListener(item -> {
-                    int itemID = item.getItemId();
+        activityMainBinding.bottomNavBar.setOnItemSelectedListener(view -> {
+                    int itemID = view.getItemId();
                     if (itemID == R.id.dashboard_bottom_nav_btn) {
                         replaceFragment(new DashboardFragment(), activityMainBinding.fragmentContainer);
-
                     } else if (itemID == R.id.report_bottom_nav_btn) {
                         replaceFragment(new ReportFragment(), activityMainBinding.fragmentContainer);
                     } else if (itemID == R.id.profile_bottom_nav_btn) {
@@ -57,6 +59,17 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        activityMainBinding.navigationView.setNavigationItemSelectedListener(view -> {
+            int itemID = view.getItemId();
+            if (itemID == R.id.profile_nav_drawer) {
+                replaceFragment(new ProfileFragment(),activityMainBinding.fragmentContainer);
+                   activityMainBinding.bottomNavBar.setSelectedItemId(R.id.profile_bottom_nav_btn);
+             }
+            activityMainBinding.drawLayout.close();
+            return true;
+        });
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        activityMainBinding.dateAndTime.setText(formatter.format(new Date()));
 
     }
 

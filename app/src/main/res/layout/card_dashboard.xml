@@ -7,7 +7,8 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
     android:clickable="true"
-    app:cardCornerRadius="17dp">
+    app:cardCornerRadius="17dp"
+    android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -22,6 +23,14 @@
             android:src="@drawable/baseline_adjust_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/adjust_iv"
+            app:layout_constraintBottom_toTopOf="@id/location_iv"
+            android:src="@drawable/baseline_more_vert_24"/>
 
         <TextView
             android:id="@+id/source_tv"
@@ -62,6 +71,7 @@
             <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/circular_progress"
                 android:progress="50"
                 android:textAlignment="center"
                 app:indicatorColor="#DA8509"
@@ -74,7 +84,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="120%"
+                android:text="50%"
+                style="@style/progress_text"
+                android:id="@+id/progress_text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +148,7 @@
             <View
                 android:id="@+id/divider1"
                 android:layout_width="1dp"
-                android:layout_height="68dp"
+                android:layout_height="0dp"
                 android:background="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/time_tv"
