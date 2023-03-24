@@ -5,15 +5,15 @@
     android:id="@+id/dashboard_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="20dp"
+    android:layout_marginBottom="24dp"
     android:clickable="true"
-    app:cardCornerRadius="17dp"
+    app:cardCornerRadius="16dp"
     android:focusable="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="17dp">
+        android:layout_margin="16dp">
 
         <ImageView
             android:id="@+id/adjust_iv"
@@ -36,7 +36,7 @@
             android:id="@+id/source_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="16dp"
             android:text="@string/home"
             app:layout_constraintStart_toEndOf="@id/adjust_iv"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
             android:id="@+id/location_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:contentDescription="@string/destination_imageview"
             android:src="@drawable/baseline_location_on_24"
             app:layout_constraintStart_toStartOf="parent"
@@ -55,7 +55,7 @@
             android:id="@+id/destination_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="16dp"
             android:text="@string/barcelona"
             app:layout_constraintBottom_toBottomOf="@id/location_iv"
             app:layout_constraintStart_toEndOf="@id/location_iv"
@@ -74,7 +74,7 @@
                 android:id="@+id/circular_progress"
                 android:progress="50"
                 android:textAlignment="center"
-                app:indicatorColor="#DA8509"
+                app:indicatorColor="@color/ok"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +84,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50%"
+                android:text="@string/_50"
                 style="@style/progress_text"
                 android:id="@+id/progress_text"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -96,8 +96,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/distance_constraint"
             android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="72dp"
+            android:layout_marginTop="24dp"
             android:background="@drawable/curve_edge_rectangle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -187,7 +187,7 @@
             android:id="@+id/alert_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:text="@string/alerts"
             app:layout_constraintStart_toEndOf="@id/alert_indicator"
             app:layout_constraintTop_toTopOf="@id/alert_indicator" />
@@ -206,7 +206,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="24dp"
             android:text="@string/performance_text"
             app:layout_constraintStart_toEndOf="@id/performance_indicator"
             app:layout_constraintTop_toTopOf="@id/performance_indicator" />

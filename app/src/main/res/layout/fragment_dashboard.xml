@@ -1,113 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:id="@+id/dashboard_fragment"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dashboard_fragment"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
     android:backgroundTint="@color/black"
-    android:background="@color/purple_200"
-
-    tools:context=".fragments.DashboardFragment"
-    android:layout_height="match_parent">
+    tools:context=".fragments.DashboardFragment">
 
 
-<ScrollView
-    android:backgroundTint="@color/black"
-    android:background="@color/purple_200"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        style="@style/fragment_theme"
-        android:layout_height="wrap_content"
-        >
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/black">
 
-        <View
-            android:id="@+id/rectangle_1"
-            android:layout_width="0dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="100dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/rectangle_bottom_curve"
-            />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/fragment_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelines_v_l"
-            android:layout_width="wrap_content"
-            app:layout_constraintGuide_begin="20dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            <View
+                android:id="@+id/rectangle_1"
+                android:layout_width="0dp"
+                android:layout_height="104dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/rectangle_bottom_curve"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guidelines_v_r"
-            android:layout_width="wrap_content"
-            app:layout_constraintGuide_end="20dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelines_v_l"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".04" />
 
-        <TextView
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingTop="20dp"
-            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-            android:id="@+id/welcome_text"
-            android:textSize="20sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="@string/welcome"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelines_v_r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".96" />
 
-        <TextView
+            <TextView
+                android:id="@+id/welcome_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="@string/welcome"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-            android:id="@+id/check_performance_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/welcome_text"
-            android:text="@string/check_performance"/>
+            <TextView
+                android:id="@+id/check_performance_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/check_performance"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+                app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:progress="84"
-            android:textAlignment="center"
-            app:indicatorColor="#49BF0A"
-            app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
-            app:layout_constraintTop_toTopOf="parent"
-            app:trackColor="@color/black"
-            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="10dp"
 
-        </com.google.android.material.progressindicator.CircularProgressIndicator>
+                app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
+                app:layout_constraintTop_toTopOf="parent"
+               >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dashboard"
-            style="@style/fragment_title_theme"
-            android:paddingTop="10dp"
-            android:id="@+id/dashboard_tv"
-            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-            app:layout_constraintTop_toBottomOf="@id/rectangle_1"/>
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:layout_width="0dp"
+                    android:progress="84"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:indicatorColor="@color/ok"
+                    app:trackColor="@color/black"
+                    android:layout_height="0dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/dashboard_recyclerview"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-            app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
-            tools:listitem="@layout/card_dashboard"
-            app:layout_constraintTop_toBottomOf="@id/dashboard_tv"/>
+                <TextView
+                    android:text="@string/_50"
+                    style="@style/progress_text"
+                    android:textColor="@color/white_l"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</ScrollView>
+            <TextView
+                android:id="@+id/dashboard_tv"
+                style="@style/fragment_title_theme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:text="@string/dashboard"
+                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+                app:layout_constraintTop_toBottomOf="@id/rectangle_1" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dashboard_recyclerview"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
+                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+                app:layout_constraintTop_toBottomOf="@id/dashboard_tv"
+                tools:listitem="@layout/card_dashboard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 
 
 </FrameLayout>
