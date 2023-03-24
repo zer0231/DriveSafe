@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.zero.drivesafe.R;
 import com.zero.drivesafe.databinding.FragmentTripDetailBinding;
+import com.zero.drivesafe.models.Ride;
 
 import java.util.Objects;
 
@@ -28,14 +29,19 @@ public class TripDetailFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+private Ride ride;
     public TripDetailFragment() {
         // Required empty public constructor
     }
+
+    public TripDetailFragment(Ride ride) {
+        this.ride = ride;
+        // Required empty public constructor
+    }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -83,8 +89,13 @@ public class TripDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         FragmentTripDetailBinding fragmentTripDetailBinding = FragmentTripDetailBinding.inflate(inflater,container,false);
+        fragmentTripDetailBinding.sourceTv.setText(ride.getSource());
+        fragmentTripDetailBinding.totalDistanceTv.setText(ride.getTotalDistance()+" ");
+        fragmentTripDetailBinding.timeTv.setText(ride.getTime());
+        fragmentTripDetailBinding.highestSpeedTv.setText(ride.getHighestSpeed()+" ");
+        fragmentTripDetailBinding.tvTotalAlerts.setText(ride.getAlerts()+" ");
         fragmentTripDetailBinding.backIv.setOnClickListener(view -> {
-           
+            Toast.makeText(getContext(), "exit", Toast.LENGTH_SHORT).show();
         });
         return fragmentTripDetailBinding.getRoot() ;
     }

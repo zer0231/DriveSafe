@@ -7,8 +7,8 @@
     tools:context=".fragments.ProfileFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
         style="@style/fragment_theme"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.Guideline
@@ -35,8 +35,8 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            style="@style/fragment_title_theme"
             android:id="@+id/driver_profile_tv"
+            style="@style/fragment_title_theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/driver_profiles"
@@ -44,15 +44,25 @@
             app:layout_constraintStart_toEndOf="@id/driver_profile_iv"
             app:layout_constraintTop_toTopOf="@id/driver_profile_iv" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/driver_profile_recyclerview"
+        <ScrollView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
             app:layout_constraintStart_toStartOf="@id/guideline_left"
-            app:layout_constraintTop_toBottomOf="@id/driver_profile_iv"
-            tools:listitem="@layout/card_profile" />
+            app:layout_constraintTop_toBottomOf="@id/driver_profile_iv">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/driver_profile_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                tools:listitem="@layout/card_profile" />
+        </ScrollView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

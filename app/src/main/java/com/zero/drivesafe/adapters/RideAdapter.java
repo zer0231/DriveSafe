@@ -55,6 +55,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         }
         String progressText = progress + " %";
         holder.cardDashboardBinding.progressText.setText(progressText);
+        holder.cardDashboardBinding.circularProgress.setProgress(progress);
         String alert = "Total Alerts: " + rideObject.getAlerts();
         String totalDistance = rideObject.getTotalDistance() + " Km";
         String highestSpeed = rideObject.getHighestSpeed() + " Km/h";
@@ -68,7 +69,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
             activity.getSupportFragmentManager().beginTransaction()
 
-                    .replace(activityMainBinding.fragmentContainer.getId(), new TripDetailFragment())
+                    .replace(activityMainBinding.fragmentContainer.getId(), new TripDetailFragment(rideObject))
                     .commit();
         });
     }

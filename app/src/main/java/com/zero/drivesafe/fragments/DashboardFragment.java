@@ -42,7 +42,7 @@ public class DashboardFragment extends Fragment {
         FragmentDashboardBinding dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false);
         ArrayList<Ride> rideArrayList = new ArrayList<>();
         rideArrayList.add(new Ride("home", "home", "2 h 4 m", 2, 2, 2,45));
-        rideArrayList.add(new Ride("home", "home", "3 h 3 m", 2, 2, 2,80));
+        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2,80));
         rideArrayList.add(new Ride("home", "home", "2 h 1 m", 2, 2, 2,90));
         rideArrayList.add(new Ride("home", "home", "4 h 2 m", 2, 2, 2,65));
         RideAdapter rideAdapter = new RideAdapter(rideArrayList);

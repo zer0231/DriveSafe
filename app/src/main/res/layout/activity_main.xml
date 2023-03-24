@@ -55,7 +55,6 @@
             android:name="com.zero.drivesafe.fragments.DashboardFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:paddingBottom="16dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@id/bottom_nav_bar"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
@@ -65,11 +64,13 @@
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav_bar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:backgroundTint="@color/white"
             app:itemTextColor="@color/black"
-            app:labelVisibilityMode="selected"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_nav_menu" />
 
 
