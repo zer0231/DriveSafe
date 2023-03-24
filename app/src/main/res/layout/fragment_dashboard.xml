@@ -32,7 +32,7 @@
             android:layout_height="100dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="@drawable/rectangle_1"
+            android:background="@drawable/rectangle_bottom_curve"
             />
 
         <androidx.constraintlayout.widget.Guideline

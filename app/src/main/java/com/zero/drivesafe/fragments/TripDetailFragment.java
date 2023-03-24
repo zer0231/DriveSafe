@@ -70,7 +70,7 @@ private Ride ride;
     @Override
     public void onStop() {
         super.onStop();
-        ((AppCompatActivity)getActivity()).getSupportActionBar().show(); //for showing toolbar after the fragment is closed
+        ((AppCompatActivity) requireActivity()).getSupportActionBar().show(); //for showing toolbar after the fragment is closed
 
     }
 
@@ -95,6 +95,7 @@ private Ride ride;
         fragmentTripDetailBinding.highestSpeedTv.setText(ride.getHighestSpeed()+" ");
         fragmentTripDetailBinding.tvTotalAlerts.setText(ride.getAlerts()+" ");
         fragmentTripDetailBinding.backIv.setOnClickListener(view -> {
+            getActivity().getFragmentManager().popBackStack();
             Toast.makeText(getContext(), "exit", Toast.LENGTH_SHORT).show();
         });
         return fragmentTripDetailBinding.getRoot() ;

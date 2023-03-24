@@ -140,7 +140,7 @@
                 android:id="@+id/distance_constraint"
                 android:layout_width="0dp"
                 android:layout_height="72dp"
-                android:background="@color/black"
+                android:background="@drawable/rectangle_bottom_curve"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
                 app:layout_constraintTop_toBottomOf="@id/iv_map">
