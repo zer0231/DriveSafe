@@ -139,7 +139,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/distance_constraint"
                 android:layout_width="0dp"
-                android:layout_height="72dp"
+                android:layout_height="80dp"
                 android:background="@drawable/rectangle_bottom_curve"
                 app:layout_constraintEnd_toEndOf="@id/guideline_right"
                 app:layout_constraintStart_toStartOf="@id/guideline_left"
@@ -152,11 +152,24 @@
                     android:text="@string/total_distance"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/textView"
                     app:layout_constraintEnd_toStartOf="@+id/divider1"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/secondary_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Distance"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/total_distance_tv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/total_distance_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/total_distance_tv" />
 
                 <TextView
                     android:id="@+id/time_tv"
@@ -165,11 +178,25 @@
                     android:text="@string/time_traveled"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/textView2"
                     app:layout_constraintEnd_toStartOf="@+id/divider2"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/divider1"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/textView2"
+
+                    style="@style/secondary_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/time_tv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/time_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/time_tv" />
 
                 <TextView
                     android:id="@+id/highest_speed_tv"
@@ -178,11 +205,24 @@
                     android:text="@string/speed"
                     android:textColor="@color/white"
                     android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/textView3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/divider2"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    style="@style/secondary_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Highest Speed"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/highest_speed_tv"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@id/highest_speed_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/highest_speed_tv" />
 
                 <View
                     android:id="@+id/divider1"

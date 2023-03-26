@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/baseline_insert_chart_outlined_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/daily_report_icon" />
 
         <TextView
             style="@style/fragment_title_theme"
@@ -40,23 +41,23 @@
             app:layout_constraintTop_toBottomOf="@id/chart_icon_imageview" />
 
         <TextView
-            android:textSize="24sp"
             android:id="@+id/number_alert_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/alert_number"
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/date_btn" />
 
         <TextView
-            android:textSize="24sp"
-            android:layout_marginStart="8dp"
-            app:layout_constraintStart_toEndOf="@id/number_alert_tv"
             android:id="@+id/alert_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="@string/alert"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="@id/number_alert_tv"
+            app:layout_constraintStart_toEndOf="@id/number_alert_tv"
             app:layout_constraintTop_toTopOf="@id/number_alert_tv" />
 
         <ImageView
@@ -66,25 +67,75 @@
             android:src="@drawable/graph"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/alert_tv" />
+            app:layout_constraintTop_toBottomOf="@id/alert_tv"
+            android:contentDescription="@string/bargraph" />
 
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="0dp"
-           app:layout_constraintTop_toBottomOf="@id/bargraph_iv"
-           app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintEnd_toEndOf="parent"
-           android:id="@+id/indicators_constraint_layout"
-           android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/indicators_constraint_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bargraph_iv">
 
-           <androidx.constraintlayout.widget.Guideline
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-               android:id="@+id/guideline_mid"
-               app:layout_constraintGuide_percent=".5"/>
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_mid"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
+
+            <TextView
+                android:id="@+id/total_trips_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_trips"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_12"
+                app:layout_constraintBottom_toBottomOf="@id/total_trips_tv"
+                app:layout_constraintStart_toStartOf="@id/guideline_mid"
+                app:layout_constraintTop_toTopOf="@id/total_trips_tv" />
+
+            <TextView
+                android:id="@+id/total_distance_driven_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_distance_driven"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/total_trips_tv" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_110_km"
+                app:layout_constraintBottom_toBottomOf="@id/total_distance_driven_tv"
+                app:layout_constraintStart_toStartOf="@id/guideline_mid"
+                app:layout_constraintTop_toTopOf="@id/total_distance_driven_tv" />
+
+            <TextView
+                android:id="@+id/highest_speed_all_day_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/highest_speed_of_all_day"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/total_distance_driven_tv" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_140_km"
+                android:textColor="@color/error"
+                app:layout_constraintTop_toTopOf="@id/highest_speed_all_day_tv"
+                app:layout_constraintBottom_toBottomOf="@id/highest_speed_all_day_tv"
+                app:layout_constraintStart_toStartOf="@id/guideline_mid"/>
 
 
-       </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -52,7 +52,7 @@ public class Ride {
     }
 
     public int getProgress() {
-        return progress;
+        return progress > 100 || progress < 0 ? 0 : progress;
     }
 
     public Ride(String destination, String source, String time, int alerts, int totalDistance, int highestSpeed, int progress) {

@@ -48,4 +48,12 @@
     <string name="alert_number">12</string>
     <string name="alert">Alerts</string>
     <string name="_50">50%</string>
+    <string name="bargraph">bargraph</string>
+    <string name="_12">: 12</string>
+    <string name="total_trips">Total Trips</string>
+    <string name="_140_km">: 140 Km</string>
+    <string name="_110_km">: 110 Km</string>
+    <string name="total_distance_driven">Total Distance Driven</string>
+    <string name="highest_speed_of_all_day">Highest Speed of all day</string>
+    <string name="daily_report_icon">daily report icon</string>
 </resources>
