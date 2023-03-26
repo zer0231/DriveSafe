@@ -14,23 +14,18 @@
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
+            android:noHistory="true"
             android:theme="@style/Theme.DriveSafe.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.DriveSafe.TextView"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.DriveSafe.TextView" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+
     </application>
 
 </manifest>

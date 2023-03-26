@@ -22,6 +22,7 @@ import java.util.ArrayList;
  * create an instance of this fragment.
  */
 public class DashboardFragment extends Fragment {
+    FragmentDashboardBinding dashboardBinding;
 
     public DashboardFragment() {
         // Required empty public constructor
@@ -34,22 +35,29 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentDashboardBinding dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false);
+        dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false);
         ArrayList<Ride> rideArrayList = new ArrayList<>();
-        rideArrayList.add(new Ride("home", "home", "2 h 4 m", 2, 2, 2,100));
+//TODO: inserting only unique items???
+        rideArrayList.add(new Ride("home", "home", "2 h 4 m", 2, 2, 2, 100));
+        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
+        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
+        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
 
-        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2,80));
-        rideArrayList.add(new Ride("home", "home", "2 h 1 m", 2, 2, 2,90));
-        rideArrayList.add(new Ride("home", "home", "4 h 2 m", 2, 2, 2,65));
         RideAdapter rideAdapter = new RideAdapter(rideArrayList);
         dashboardBinding.dashboardRecyclerview.setLayoutManager(new LinearLayoutManager(dashboardBinding.dashboardRecyclerview.getContext()));
         dashboardBinding.dashboardRecyclerview.setAdapter(rideAdapter);
-
         return dashboardBinding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        dashboardBinding = null;
     }
 }

@@ -10,13 +10,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.zero.drivesafe.databinding.ActivityMainBinding;
 import com.zero.drivesafe.databinding.NavHeaderBinding;
 import com.zero.drivesafe.fragments.DashboardFragment;
 import com.zero.drivesafe.fragments.ProfileFragment;
 import com.zero.drivesafe.fragments.ReportFragment;
-import com.zero.drivesafe.fragments.TripDetailFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -71,6 +69,12 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
         activityMainBinding.dateAndTime.setText(formatter.format(new Date()));
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(this, "Exiting", Toast.LENGTH_SHORT).show();
+       finish(); //finishAffinity() removes all the activities that share the same affinity<indicates which task an activity belongs to>
     }
 
     public void replaceFragment(Fragment fragment, FragmentContainerView fragmentContainer) {

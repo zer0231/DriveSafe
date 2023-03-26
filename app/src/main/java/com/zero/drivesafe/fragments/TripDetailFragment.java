@@ -5,18 +5,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.zero.drivesafe.R;
 import com.zero.drivesafe.databinding.FragmentTripDetailBinding;
 import com.zero.drivesafe.models.Ride;
-
-import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +29,7 @@ public class TripDetailFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     private Ride ride;
+    FragmentTripDetailBinding fragmentTripDetailBinding;
 
     public TripDetailFragment() {
         // Required empty public constructor
@@ -54,6 +51,7 @@ public class TripDetailFragment extends Fragment {
      */
     // TODO: Rename and change types and number of parameters
     public static TripDetailFragment newInstance(String param1, String param2) {
+
         TripDetailFragment fragment = new TripDetailFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -85,19 +83,26 @@ public class TripDetailFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        String totalDistance = ride.getTotalDistance() + "";
+        String highSpeed = ride.getHighestSpeed() + "";
+        String totalAlerts = ride.getAlerts() + "";
         // Inflate the layout for this fragment
-        FragmentTripDetailBinding fragmentTripDetailBinding = FragmentTripDetailBinding.inflate(inflater, container, false);
+        fragmentTripDetailBinding = FragmentTripDetailBinding.inflate(inflater, container, false);
         fragmentTripDetailBinding.sourceTv.setText(ride.getSource());
-        fragmentTripDetailBinding.totalDistanceTv.setText(ride.getTotalDistance() + " ");
+        fragmentTripDetailBinding.totalDistanceTv.setText(totalDistance);
         fragmentTripDetailBinding.timeTv.setText(ride.getTime());
-        fragmentTripDetailBinding.highestSpeedTv.setText(ride.getHighestSpeed() + " ");
-        fragmentTripDetailBinding.tvTotalAlerts.setText(ride.getAlerts() + " ");
+        fragmentTripDetailBinding.highestSpeedTv.setText(highSpeed);
+        fragmentTripDetailBinding.tvTotalAlerts.setText(totalAlerts);
         fragmentTripDetailBinding.backIv.setOnClickListener(view -> {
-            getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit();
-//getActivity().getSupportFragmentManager().popBackStackImmediate();
-            Toast.makeText(getContext(), "exit", Toast.LENGTH_SHORT).show();
+            getActivity().getSupportFragmentManager().beginTransaction().remove(this).commit(); //removing this fragment from stack
         });
         return fragmentTripDetailBinding.getRoot();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        fragmentTripDetailBinding = null;
     }
 }

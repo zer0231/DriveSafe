@@ -12,7 +12,7 @@ import com.zero.drivesafe.models.Driver;
 import java.util.ArrayList;
 
 public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> {
-    private ArrayList<Driver> driverArrayList;
+    private final ArrayList<Driver> driverArrayList;
     CardProfileBinding cardProfileBinding;
 
     public DriveAdapter(ArrayList<Driver> driverArrayList) {
@@ -36,6 +36,7 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
         holder.cardProfileBinding.totalTripTv.setText(totalTrip);
 
     }
+
 
     @Override
     public int getItemCount() {

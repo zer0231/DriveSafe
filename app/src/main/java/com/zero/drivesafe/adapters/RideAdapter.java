@@ -3,29 +3,26 @@ package com.zero.drivesafe.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.zero.drivesafe.MainActivity;
 import com.zero.drivesafe.R;
 import com.zero.drivesafe.databinding.ActivityMainBinding;
 import com.zero.drivesafe.databinding.CardDashboardBinding;
-import com.zero.drivesafe.databinding.FragmentTripDetailBinding;
+import com.zero.drivesafe.databinding.FragmentDashboardBinding;
+import com.zero.drivesafe.fragments.DashboardFragment;
 import com.zero.drivesafe.fragments.TripDetailFragment;
 import com.zero.drivesafe.models.Ride;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
     public ArrayList<Ride> RideArrayList;
     public CardDashboardBinding cardDashboardBinding;
+    FragmentDashboardBinding fragmentDashboardBinding;
     public ActivityMainBinding activityMainBinding;
 
     public RideAdapter(ArrayList<Ride> RideArrayList) {
@@ -38,6 +35,8 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
     @Override
     public RideAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         cardDashboardBinding = CardDashboardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        fragmentDashboardBinding = FragmentDashboardBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
+        fragmentDashboardBinding.dashboardTv.setText(RideArrayList.size()+" items");
         activityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new ViewHolder(cardDashboardBinding);
     }
