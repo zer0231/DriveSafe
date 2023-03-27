@@ -16,17 +16,16 @@ import com.zero.drivesafe.databinding.CardDashboardBinding;
 import com.zero.drivesafe.fragments.TripDetailFragment;
 import com.zero.drivesafe.models.Ride;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
-    public ArrayList<Ride> RideArrayList;
+    public List<Ride> RideList;
     private final Context parentContext;
     private final FragmentContainerView parentFragmentContainer;
 
-    public RideAdapter(Context parentContext, ArrayList<Ride> RideArrayList, FragmentContainerView parentFragmentContainer) {  //Take all the required items from the constructor instead of declaring again
+    public RideAdapter(Context parentContext, List<Ride> RideList, FragmentContainerView parentFragmentContainer) {  //Take all the required items from the constructor instead of declaring again
         this.parentContext = parentContext;
-        this.RideArrayList = RideArrayList;
+        this.RideList = RideList;
         this.parentFragmentContainer = parentFragmentContainer;
     }
 
@@ -38,7 +37,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RideAdapter.ViewHolder holder, int position) {
-        Ride rideObject = RideArrayList.get(position);
+        Ride rideObject = RideList.get(position);
         int progress = rideObject.getProgress();
         if (progress > 75 && progress < 100) {
             holder.cardDashboardBinding.circularProgress.setIndicatorColor(ContextCompat.getColor(parentContext, R.color.ok));
@@ -61,16 +60,13 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         holder.cardDashboardBinding.highestSpeedTv.setText(highestSpeed);
         holder.cardDashboardBinding.dashboardCard.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
-            activity.getSupportFragmentManager().beginTransaction()
-                    .add(parentFragmentContainer.getId(), new TripDetailFragment(rideObject),"TRIP_DETAIL_FRAGMENT")
-                    .commit();
+            activity.getSupportFragmentManager().beginTransaction().add(parentFragmentContainer.getId(), new TripDetailFragment(rideObject), "TRIP_DETAIL_FRAGMENT").commit();
         });
     }
 
-
     @Override
     public int getItemCount() {
-        return RideArrayList.size();
+        return RideList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

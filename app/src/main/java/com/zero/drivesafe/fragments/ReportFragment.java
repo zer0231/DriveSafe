@@ -17,17 +17,13 @@ public class ReportFragment extends Fragment {
         // Required empty public constructor
     }
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         fragmentReportBinding = FragmentReportBinding.inflate(inflater, container, false);
         // Inflate the layout for this fragment
         return fragmentReportBinding.getRoot();

@@ -9,12 +9,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.zero.drivesafe.databinding.FragmentTripDetailBinding;
 import com.zero.drivesafe.models.Ride;
-
-import java.nio.file.attribute.UserDefinedFileAttributeView;
 
 
 public class TripDetailFragment extends Fragment {
@@ -46,13 +43,11 @@ public class TripDetailFragment extends Fragment {
     }
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
-
 
 
     @Override
@@ -77,7 +72,6 @@ public class TripDetailFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        Toast.makeText(getContext(), "Destroyed", Toast.LENGTH_SHORT).show();
         fragmentTripDetailBinding = null; //Destroy the view for memory saving
     }
 }

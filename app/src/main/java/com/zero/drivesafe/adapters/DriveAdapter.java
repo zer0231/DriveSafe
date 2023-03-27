@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.zero.drivesafe.databinding.CardProfileBinding;
 import com.zero.drivesafe.models.Driver;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> {
-    private final ArrayList<Driver> driverArrayList;
+    private final List<Driver> driverList;
 
 
-    public DriveAdapter(ArrayList<Driver> driverArrayList) {
-        this.driverArrayList = driverArrayList;
+    public DriveAdapter(List<Driver> driverList) {
+        this.driverList = driverList;
     }
 
     @NonNull
@@ -28,7 +28,7 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull DriveAdapter.ViewHolder holder, int position) {
 
-        Driver driverObject = driverArrayList.get(position);
+        Driver driverObject = driverList.get(position);
         String totalTrip = "Total trip: " + driverObject.getTotal_trip();
         holder.cardProfileBinding.usernameTv.setText(driverObject.getName());
         holder.cardProfileBinding.emailTv.setText(driverObject.getEmail());
@@ -39,7 +39,7 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return driverArrayList.size();
+        return driverList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -15,18 +15,13 @@ import com.zero.drivesafe.databinding.FragmentProfileBinding;
 import com.zero.drivesafe.models.Driver;
 
 import java.util.ArrayList;
-
+import java.util.List;
 
 public class ProfileFragment extends Fragment {
     private FragmentProfileBinding profileBinding;
 
     public ProfileFragment() {
         // Required empty public constructor
-    }
-
-
-    public static ProfileFragment newInstance() {
-        return new ProfileFragment();
     }
 
     @Override
@@ -42,16 +37,15 @@ public class ProfileFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         profileBinding = FragmentProfileBinding.inflate(inflater, container, false);
-        ArrayList<Driver> driverArrayList = new ArrayList<>();
-        driverArrayList.add(new Driver("1", "test@test.com", 23));
-        driverArrayList.add(new Driver("2", "test@test.com", 23));
-        driverArrayList.add(new Driver("3", "test@test.com", 23));
-        driverArrayList.add(new Driver("4", "test@test.com", 23));
-        driverArrayList.add(new Driver("5", "test@test.com", 23));
-        DriveAdapter driveAdapter = new DriveAdapter(driverArrayList);
+        List<Driver> driverList = new ArrayList<>();
+        driverList.add(new Driver("1", "test@test.com", 23));
+        driverList.add(new Driver("2", "test@test.com", 23));
+        driverList.add(new Driver("3", "test@test.com", 23));
+        driverList.add(new Driver("4", "test@test.com", 23));
+        driverList.add(new Driver("5", "test@test.com", 23));
+        DriveAdapter driveAdapter = new DriveAdapter(driverList);
         profileBinding.driverProfileRecyclerview.setLayoutManager(new LinearLayoutManager(profileBinding.driverProfileRecyclerview.getContext()));
         profileBinding.driverProfileRecyclerview.setAdapter(driveAdapter);
         return profileBinding.getRoot();
