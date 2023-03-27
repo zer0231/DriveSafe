@@ -49,6 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingTop="24dp"
+            android:scrollbars="none"
             android:paddingBottom="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/guideline_right"
@@ -59,7 +60,7 @@
                 android:id="@+id/driver_profile_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
+                android:nestedScrollingEnabled="true"
                 android:layout_marginTop="16dp"
 
                 tools:listitem="@layout/card_profile" />

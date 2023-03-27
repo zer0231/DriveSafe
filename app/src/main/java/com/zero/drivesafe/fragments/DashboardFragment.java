@@ -38,10 +38,10 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false);
         ArrayList<Ride> rideArrayList = new ArrayList<>();
-        rideArrayList.add(new Ride("home", "home", "2 h 4 m", 2, 2, 2, 100));
-        rideArrayList.add(new Ride("home", "somewhere1", "3 h 3 m", 2, 2, 2, 80));
-        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
-        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
+        rideArrayList.add(new Ride("1", "home", "2 h 4 m", 2, 2, 2, 100));
+        rideArrayList.add(new Ride("2", "somewhere1", "3 h 3 m", 2, 2, 2, 80));
+        rideArrayList.add(new Ride("3", "somewhere", "3 h 3 m", 2, 2, 2, 80));
+        rideArrayList.add(new Ride("4", "somewhere", "3 h 3 m", 2, 2, 2, 80));
 
         RideAdapter rideAdapter = new RideAdapter(requireContext(), rideArrayList, requireActivity().findViewById(R.id.fragment_container));
         dashboardBinding.dashboardRecyclerview.setLayoutManager(new LinearLayoutManager(dashboardBinding.dashboardRecyclerview.getContext()));

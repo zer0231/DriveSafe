@@ -1,129 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:backgroundTint="@color/black"
+    android:overScrollMode="never"
+    android:scrollbars="none"
     tools:context=".fragments.DashboardFragment">
 
-
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/fragment_theme"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@color/black">
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/rectangle_1"
+            android:layout_width="0dp"
+            android:layout_height="104dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/rectangle_bottom_curve"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelines_v_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".04" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelines_v_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".96" />
+
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="@string/welcome"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/check_performance_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@string/check_performance"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            style="@style/fragment_theme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_margin="10dp"
+            app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <View
-                android:id="@+id/rectangle_1"
+            <com.google.android.material.progressindicator.CircularProgressIndicator
                 android:layout_width="0dp"
-                android:layout_height="104dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="@drawable/rectangle_bottom_curve"
+                android:layout_height="0dp"
+                android:progress="84"
+                app:indicatorColor="@color/ok"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:trackColor="@color/black" />
+
+            <TextView
+                style="@style/progress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_50"
+                android:textColor="@color/white_l"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelines_v_l"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".04" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelines_v_r"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".96" />
-
-            <TextView
-                android:id="@+id/welcome_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:text="@string/welcome"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/check_performance_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="@string/check_performance"
-                android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-                app:layout_constraintTop_toBottomOf="@+id/welcome_text" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_margin="10dp"
-                app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <com.google.android.material.progressindicator.CircularProgressIndicator
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:progress="84"
-                    app:indicatorColor="@color/ok"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:trackColor="@color/black" />
-
-                <TextView
-                    style="@style/progress_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/_50"
-                    android:textColor="@color/white_l"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <TextView
-                android:id="@+id/dashboard_tv"
-                style="@style/fragment_title_theme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:text="@string/dashboard"
-                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-                app:layout_constraintTop_toBottomOf="@id/rectangle_1" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dashboard_recyclerview"
-                android:layout_width="0dp"
-                android:overScrollMode="never"
-                android:nestedScrollingEnabled="true"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
-                app:layout_constraintTop_toBottomOf="@id/dashboard_tv"
-                tools:listitem="@layout/card_dashboard" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </ScrollView>
+        <TextView
+            android:id="@+id/dashboard_tv"
+            style="@style/fragment_title_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:text="@string/dashboard"
+            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+            app:layout_constraintTop_toBottomOf="@id/rectangle_1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dashboard_recyclerview"
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="true"
+            app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/guidelines_v_l"
+            app:layout_constraintTop_toBottomOf="@id/dashboard_tv"
+            tools:listitem="@layout/card_dashboard" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</FrameLayout>
+</ScrollView>

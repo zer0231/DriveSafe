@@ -15,6 +15,7 @@ import com.zero.drivesafe.databinding.NavHeaderBinding;
 import com.zero.drivesafe.fragments.DashboardFragment;
 import com.zero.drivesafe.fragments.ProfileFragment;
 import com.zero.drivesafe.fragments.ReportFragment;
+import com.zero.drivesafe.fragments.TripDetailFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -72,8 +73,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Toast.makeText(this, "Exiting", Toast.LENGTH_SHORT).show();
-        finish(); //finishAffinity() removes all the activities that share the same affinity<indicates which task an activity belongs to>
+        TripDetailFragment tripDetailFragment = (TripDetailFragment) getSupportFragmentManager().findFragmentByTag("TRIP_DETAIL_FRAGMENT");
+
+        if (tripDetailFragment != null && tripDetailFragment.isVisible()) {
+            getSupportFragmentManager().beginTransaction().remove(tripDetailFragment).commit();
+        } else {
+            finish(); //finishAffinity() removes all the activities that share the same affinity<indicates which task an activity belongs to>
+        }
     }
 
     public void replaceFragment(Fragment fragment, FragmentContainerView fragmentContainer) {

@@ -62,7 +62,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         holder.cardDashboardBinding.dashboardCard.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
             activity.getSupportFragmentManager().beginTransaction()
-                    .add(parentFragmentContainer.getId(), new TripDetailFragment(rideObject))
+                    .add(parentFragmentContainer.getId(), new TripDetailFragment(rideObject),"TRIP_DETAIL_FRAGMENT")
                     .commit();
         });
     }

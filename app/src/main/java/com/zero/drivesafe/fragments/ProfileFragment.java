@@ -46,11 +46,11 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         profileBinding = FragmentProfileBinding.inflate(inflater, container, false);
         ArrayList<Driver> driverArrayList = new ArrayList<>();
-        driverArrayList.add(new Driver("test", "test@test.com", 23));
-        driverArrayList.add(new Driver("test", "test@test.com", 23));
-        driverArrayList.add(new Driver("test", "test@test.com", 23));
-        driverArrayList.add(new Driver("test", "test@test.com", 23));
-        driverArrayList.add(new Driver("test", "test@test.com", 23));
+        driverArrayList.add(new Driver("1", "test@test.com", 23));
+        driverArrayList.add(new Driver("2", "test@test.com", 23));
+        driverArrayList.add(new Driver("3", "test@test.com", 23));
+        driverArrayList.add(new Driver("4", "test@test.com", 23));
+        driverArrayList.add(new Driver("5", "test@test.com", 23));
         DriveAdapter driveAdapter = new DriveAdapter(driverArrayList);
         profileBinding.driverProfileRecyclerview.setLayoutManager(new LinearLayoutManager(profileBinding.driverProfileRecyclerview.getContext()));
         profileBinding.driverProfileRecyclerview.setAdapter(driveAdapter);
