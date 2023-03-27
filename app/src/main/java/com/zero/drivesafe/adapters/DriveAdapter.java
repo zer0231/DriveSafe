@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> {
     private final ArrayList<Driver> driverArrayList;
-    CardProfileBinding cardProfileBinding;
+
 
     public DriveAdapter(ArrayList<Driver> driverArrayList) {
         this.driverArrayList = driverArrayList;
@@ -22,15 +22,14 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
     @NonNull
     @Override
     public DriveAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        cardProfileBinding = CardProfileBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new DriveAdapter.ViewHolder(cardProfileBinding);
+        return new DriveAdapter.ViewHolder(CardProfileBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull DriveAdapter.ViewHolder holder, int position) {
 
         Driver driverObject = driverArrayList.get(position);
-        String totalTrip = "Total trip: "+driverObject.getTotal_trip();
+        String totalTrip = "Total trip: " + driverObject.getTotal_trip();
         holder.cardProfileBinding.usernameTv.setText(driverObject.getName());
         holder.cardProfileBinding.emailTv.setText(driverObject.getEmail());
         holder.cardProfileBinding.totalTripTv.setText(totalTrip);
@@ -44,7 +43,6 @@ public class DriveAdapter extends RecyclerView.Adapter<DriveAdapter.ViewHolder> 
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-
 
         private final CardProfileBinding cardProfileBinding;
 

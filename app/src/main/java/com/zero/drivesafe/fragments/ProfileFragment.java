@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 
 public class ProfileFragment extends Fragment {
-    FragmentProfileBinding profileBinding;
+    private FragmentProfileBinding profileBinding;
 
     public ProfileFragment() {
         // Required empty public constructor

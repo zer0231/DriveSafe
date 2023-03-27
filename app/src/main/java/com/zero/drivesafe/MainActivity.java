@@ -20,8 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding activityMainBinding;
-    NavHeaderBinding navHeaderBinding;
+    private ActivityMainBinding activityMainBinding;
 
 
     @Override
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View header = activityMainBinding.navigationView.getHeaderView(0);
-        navHeaderBinding = NavHeaderBinding.bind(header);
+        NavHeaderBinding navHeaderBinding = NavHeaderBinding.bind(header);
 
         setSupportActionBar(activityMainBinding.toolbar);
 
@@ -60,9 +59,9 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding.navigationView.setNavigationItemSelectedListener(view -> {
             int itemID = view.getItemId();
             if (itemID == R.id.profile_nav_drawer) {
-                replaceFragment(new ProfileFragment(),activityMainBinding.fragmentContainer);
-                   activityMainBinding.bottomNavBar.setSelectedItemId(R.id.profile_bottom_nav_btn);
-             }
+                replaceFragment(new ProfileFragment(), activityMainBinding.fragmentContainer);
+                activityMainBinding.bottomNavBar.setSelectedItemId(R.id.profile_bottom_nav_btn);
+            }
             activityMainBinding.drawLayout.close();
             return true;
         });
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "Exiting", Toast.LENGTH_SHORT).show();
-       finish(); //finishAffinity() removes all the activities that share the same affinity<indicates which task an activity belongs to>
+        finish(); //finishAffinity() removes all the activities that share the same affinity<indicates which task an activity belongs to>
     }
 
     public void replaceFragment(Fragment fragment, FragmentContainerView fragmentContainer) {

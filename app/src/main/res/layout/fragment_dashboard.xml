@@ -70,7 +70,6 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_margin="10dp"
-
                 app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -112,7 +111,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/dashboard_recyclerview"
                 android:layout_width="0dp"
-                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:nestedScrollingEnabled="true"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="@id/guidelines_v_r"
                 app:layout_constraintHorizontal_bias="1.0"

@@ -8,24 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zero.drivesafe.R;
-import com.zero.drivesafe.databinding.FragmentProfileBinding;
 import com.zero.drivesafe.databinding.FragmentReportBinding;
 
 public class ReportFragment extends Fragment {
-FragmentReportBinding fragmentReportBinding;
+    private FragmentReportBinding fragmentReportBinding;
 
     public ReportFragment() {
         // Required empty public constructor
     }
 
-    public static ReportFragment newInstance(String param1, String param2) {
-        ReportFragment fragment = new ReportFragment();
-        Bundle args = new Bundle();
 
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

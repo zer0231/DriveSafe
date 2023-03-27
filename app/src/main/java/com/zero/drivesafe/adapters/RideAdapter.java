@@ -1,44 +1,39 @@
 package com.zero.drivesafe.adapters;
 
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentContainerView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zero.drivesafe.R;
-import com.zero.drivesafe.databinding.ActivityMainBinding;
 import com.zero.drivesafe.databinding.CardDashboardBinding;
-import com.zero.drivesafe.databinding.FragmentDashboardBinding;
-import com.zero.drivesafe.fragments.DashboardFragment;
 import com.zero.drivesafe.fragments.TripDetailFragment;
 import com.zero.drivesafe.models.Ride;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
     public ArrayList<Ride> RideArrayList;
-    public CardDashboardBinding cardDashboardBinding;
-    FragmentDashboardBinding fragmentDashboardBinding;
-    public ActivityMainBinding activityMainBinding;
+    private final Context parentContext;
+    private final FragmentContainerView parentFragmentContainer;
 
-    public RideAdapter(ArrayList<Ride> RideArrayList) {
+    public RideAdapter(Context parentContext, ArrayList<Ride> RideArrayList, FragmentContainerView parentFragmentContainer) {  //Take all the required items from the constructor instead of declaring again
+        this.parentContext = parentContext;
         this.RideArrayList = RideArrayList;
-
-
+        this.parentFragmentContainer = parentFragmentContainer;
     }
 
     @NonNull
     @Override
     public RideAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        cardDashboardBinding = CardDashboardBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        fragmentDashboardBinding = FragmentDashboardBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
-        fragmentDashboardBinding.dashboardTv.setText(RideArrayList.size()+" items");
-        activityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new ViewHolder(cardDashboardBinding);
+        return new ViewHolder(CardDashboardBinding.inflate(LayoutInflater.from(parentContext), parent, false));
     }
 
     @Override
@@ -46,11 +41,11 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         Ride rideObject = RideArrayList.get(position);
         int progress = rideObject.getProgress();
         if (progress > 75 && progress < 100) {
-            holder.cardDashboardBinding.circularProgress.setIndicatorColor(ContextCompat.getColor(activityMainBinding.getRoot().getContext(), R.color.ok));
+            holder.cardDashboardBinding.circularProgress.setIndicatorColor(ContextCompat.getColor(parentContext, R.color.ok));
         } else if (progress > 55 && progress < 74) {
-            holder.cardDashboardBinding.circularProgress.setIndicatorColor(ContextCompat.getColor(activityMainBinding.getRoot().getContext(), R.color.warning));
+            holder.cardDashboardBinding.circularProgress.setIndicatorColor(ContextCompat.getColor(parentContext, R.color.warning));
         } else {
-            holder.cardDashboardBinding.circularProgress.setIndicatorColor(ContextCompat.getColor(activityMainBinding.getRoot().getContext(), R.color.error));
+            holder.cardDashboardBinding.circularProgress.setIndicatorColor(ContextCompat.getColor(parentContext, R.color.error));
         }
         String progressText = progress + " %";
         holder.cardDashboardBinding.progressText.setText(progressText);
@@ -67,8 +62,7 @@ public class RideAdapter extends RecyclerView.Adapter<RideAdapter.ViewHolder> {
         holder.cardDashboardBinding.dashboardCard.setOnClickListener(view -> {
             AppCompatActivity activity = (AppCompatActivity) view.getContext();
             activity.getSupportFragmentManager().beginTransaction()
-
-                    .add(activityMainBinding.fragmentContainer.getId(), new TripDetailFragment(rideObject))
+                    .add(parentFragmentContainer.getId(), new TripDetailFragment(rideObject))
                     .commit();
         });
     }

@@ -10,17 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.zero.drivesafe.R;
 import com.zero.drivesafe.adapters.RideAdapter;
 import com.zero.drivesafe.databinding.FragmentDashboardBinding;
 import com.zero.drivesafe.models.Ride;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link DashboardFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class DashboardFragment extends Fragment {
     FragmentDashboardBinding dashboardBinding;
 
@@ -35,7 +31,6 @@ public class DashboardFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -43,13 +38,12 @@ public class DashboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         dashboardBinding = FragmentDashboardBinding.inflate(inflater, container, false);
         ArrayList<Ride> rideArrayList = new ArrayList<>();
-//TODO: inserting only unique items???
         rideArrayList.add(new Ride("home", "home", "2 h 4 m", 2, 2, 2, 100));
-        rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
+        rideArrayList.add(new Ride("home", "somewhere1", "3 h 3 m", 2, 2, 2, 80));
         rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
         rideArrayList.add(new Ride("home", "somewhere", "3 h 3 m", 2, 2, 2, 80));
 
-        RideAdapter rideAdapter = new RideAdapter(rideArrayList);
+        RideAdapter rideAdapter = new RideAdapter(requireContext(), rideArrayList, requireActivity().findViewById(R.id.fragment_container));
         dashboardBinding.dashboardRecyclerview.setLayoutManager(new LinearLayoutManager(dashboardBinding.dashboardRecyclerview.getContext()));
         dashboardBinding.dashboardRecyclerview.setAdapter(rideAdapter);
         return dashboardBinding.getRoot();
