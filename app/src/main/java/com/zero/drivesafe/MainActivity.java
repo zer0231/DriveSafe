@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Toast;
 
@@ -17,12 +18,11 @@ import com.zero.drivesafe.fragments.ProfileFragment;
 import com.zero.drivesafe.fragments.ReportFragment;
 import com.zero.drivesafe.fragments.TripDetailFragment;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding activityMainBinding;
-
+    private CountDownTimer newTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
         View header = activityMainBinding.navigationView.getHeaderView(0);
         NavHeaderBinding navHeaderBinding = NavHeaderBinding.bind(header);
 
-        setSupportActionBar(activityMainBinding.toolbar);
+        setSupportActionBar(activityMainBinding.header.toolbar);
 
-        activityMainBinding.toolBarNavButton.setOnClickListener(view -> activityMainBinding.drawLayout.open());//for opening navigation menu
+        activityMainBinding.header.toolBarNavButton.setOnClickListener(view -> activityMainBinding.drawLayout.open());//for opening navigation menu
 
         navHeaderBinding.navClose.setOnClickListener(view -> activityMainBinding.drawLayout.close());//for closing navigation menu
 
@@ -42,20 +42,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         activityMainBinding.bottomNavBar.setOnItemSelectedListener(view -> {
-                    int itemID = view.getItemId();
-                    if (itemID == R.id.dashboard_bottom_nav_btn) {
-                        replaceFragment(new DashboardFragment(), activityMainBinding.fragmentContainer);
-                    } else if (itemID == R.id.report_bottom_nav_btn) {
-                        replaceFragment(new ReportFragment(), activityMainBinding.fragmentContainer);
-                    } else if (itemID == R.id.profile_bottom_nav_btn) {
-                        replaceFragment(new ProfileFragment(), activityMainBinding.fragmentContainer);
-                    } else {
-                        Toast.makeText(this, "???", Toast.LENGTH_SHORT).show();
-                    }
-
-                    return true; //Because it require return value
-                }
-        );
+            int itemID = view.getItemId();
+            if (itemID == R.id.dashboard_bottom_nav_btn) {
+                replaceFragment(new DashboardFragment(), activityMainBinding.fragmentContainer);
+            } else if (itemID == R.id.report_bottom_nav_btn) {
+                replaceFragment(new ReportFragment(), activityMainBinding.fragmentContainer);
+            } else if (itemID == R.id.profile_bottom_nav_btn) {
+                replaceFragment(new ProfileFragment(), activityMainBinding.fragmentContainer);
+            } else {
+                Toast.makeText(this, "???", Toast.LENGTH_SHORT).show();
+            }
+            return true; //Because it require return value
+        });
 
         activityMainBinding.navigationView.setNavigationItemSelectedListener(view -> {
             int itemID = view.getItemId();
@@ -66,9 +64,20 @@ public class MainActivity extends AppCompatActivity {
             activityMainBinding.drawLayout.close();
             return true;
         });
-        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
-        activityMainBinding.dateAndTime.setText(formatter.format(new Date()));
+        newTimer = new CountDownTimer(1000000,1000) { //For updating time dynamically
+            @Override
+            public void onTick(long l) {
+                Calendar calendar = Calendar.getInstance();
+                String currentTime = calendar.get(Calendar.HOUR)+":"+calendar.get(Calendar.MINUTE);
+                activityMainBinding.dateAndTime.setText(currentTime);
+            }
 
+            @Override
+            public void onFinish() {
+
+            }
+        };
+        newTimer.start();
     }
 
     @Override
@@ -87,5 +96,11 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(fragmentContainer.getId(), fragment);
         fragmentTransaction.commit();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        newTimer.cancel();
     }
 }
